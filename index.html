@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>YouTube video finder</title>
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <h1>NutritionX</h1>
+    <div class="container">
+        <h2>Quick Answer Food Questions</h2>
+
+        <form id="js-form">
+            <label for="js-search-term">What is your question?</label>
+            <input type="text" name="search-term" id="js-search-term" required>
+            <input type="submit" value="Go!">
+        </form>
+
+        <p id="js-error-message" class="error-message"></p>
+        <section id="results" class="hidden">
+          <h3></h3>
+          <ul id="results-list">
+          </ul>
+        </section>
+    </div>
+    <div class="container2">
+      <h2>Generate Meal Plan</h2>
+      <p>To Generate your custom meal plan enter in the following...</p>
+      <ul>
+        <li>Time Frame of the diet plan</li>
+        <li>Desired target daily calorie amount</li>
+        <li>Specailty diets i.e. Vegitarian, keto, paleo etc.</li>
+        <li>Dietary restrictions</li>
+      </ul>
+      <form class="js-form-2">
+        <label for="js-timeFrame">Meal plan time frame</label>
+        <input type="text" name="timeFrame" id="js-timeFrame" placeholder="one day or an entire week" required><br>
+        <label for="js-targetCalories">Enter Target Calories for the day or the week</label>
+        <input type="number" name="targetCalories" id="js-targetCalories" required><br>
+        <label for="js-diet">Specialty diet</label>
+        <input type="text" name="diet" id="js-diet" placeholder="Vegan, Keto, Paleo etc"><br>
+        <label for="js-exclude">Please enter any dietary restrictions here</label>
+        <input type="text" name="exclude" id="js-exclude" placeholder="Peanuts, Shellfish etc">
+      </form>
+
+      <p id="js-error-message" class="error-message"></p>
+      <section class="mealPlan-results hidden">
+        <h3>Here is your personalized meal plan</h3>
+        <ul>
+        </ul>
+    </div>
+    <div class="container3">
+    <h2>Search Recipes by Ingredients</h2>
+    <form class="js-form-3">
+      <label for="js-ingredient-search">Enter Ingredient here</label>
+      <input type="text" name="search-ingredient" id="js-ingredient-search" required>
+      <input type="submit" value="Search">
+    </form>
+
+    <p id="js-error-message" class="error-message"></p>
+    <section class="indredient-results hidden">
+      <h3>Recipe Results</h3>
+      <ul id="recipe-results">
+      </ul>
+    </div>
+  
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</body>
+</html>
