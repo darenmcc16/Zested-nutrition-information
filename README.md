@@ -18,20 +18,18 @@ This app is for two types of users: a visitor and a logged-in user
 * I want to understand what I can do with this app
 * so I can decide if I want to use it
 
-###### (Example) Login Page (Importance - High) (Est: 3h)
-* As a returning register user
-* I want to enter my password and username to use this app,
-* So I can have access to my account.
+###### Quick Answer Section (Importance - High) (Est: 3h)
+* As a user
+* I want to be able to search food questions and get answers back.
 
-###### (Example) Sign Up (Importance - High)  (Est: 3h)
+###### Generate Meal Plan Section (Importance - High)  (Est: 3h)
 * As a visitor
-* I want to register to use this app
-* So I can create a personal account.
+* I want to be able to generate a meal plan for a set amount of time.
+* I want those meals to give me my set macro goals for the day.
 
-###### (Example) Home Page (Importance - Medium)  (Est: 2h)
-* As a logged-in user,
-* I want to be able to preview the content of the app,
-* So i can decide what section I want to navigate to.
+###### Search receipes by Ingrediants (Importance - Medium)  (Est: 2h)
+* As a user
+* I want to be able to look up receipes based off of what I have in the house.
 
 
 
@@ -51,7 +49,7 @@ The app's functionality includes:
 
 
 ### 5. Wireframes (to do now)
-(Example) Landing Page
+Landing Page
 :-------------------------:
 ![Landing Page](/github-images/wireframes/landing-page-wireframe.jpg)
 Register Page
@@ -60,12 +58,12 @@ Register Page
 
 ### 6. API Documentation (to do later)
 API Documentation details:
-* (Example) get quick answers https://spoonacular.com/food-api/docs#Quick-Answer
+* get quick answers https://spoonacular.com/food-api/docs#Quick-Answer
 
 
 
 ### 7. Screenshots (to do later)
-(Example) Landing Page
+Landing Page
 :-------------------------:
 ![Landing Page](/github-images/screenshots/landing-page-screenshot.png)
 Register Page

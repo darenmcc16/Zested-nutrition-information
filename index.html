@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>YouTube video finder</title>
+    <title>NutritionX - Getting in Shape</title>
     <link rel="shortcut icon" href="#">
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
+
+  <!--Quick Answer Section-->
   <h1>NutritionX</h1>
     <div class="container">
         <h2>Quick Answer Food Questions</h2>
@@ -22,10 +24,12 @@
         <p id="js-error-message" class="error-message"></p>
         <section id="results" class="hidden">
           <h3></h3>
-          <ul id="results-list">
-          </ul>
+          <div id="results-list">
+          </div>
         </section>
     </div>
+
+    <!--Generate Meal Plan section-->
     <div class="container2">
       <h2>Generate Meal Plan</h2>
       <p>To Generate your custom meal plan enter in the following...</p>
@@ -49,14 +53,20 @@
       <p id="js-error-message" class="error-message"></p>
       <section class="mealPlan-results hidden">
         <h3>Here is your personalized meal plan</h3>
-        <ul>
+        <ul id="mealPlanResults">
+        </ul>
+        <ul id="nutrientsResults">
         </ul>
     </div>
+
     <div class="container3">
     <h2>Search Recipes by Ingredients</h2>
     <form class="js-form-3">
       <label for="js-ingredient-search">Enter Ingredient here</label>
       <input type="text" name="search-ingredient" id="js-ingredient-search" required>
+
+      <label for="js-max-results">Max results</label>
+      <input type="number" name="max-results" id="js-max-results" value="10">
       <input type="submit" value="Search">
     </form>
 
