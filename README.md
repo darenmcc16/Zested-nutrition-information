@@ -27,7 +27,7 @@ This app is for two types of users: a visitor and a logged-in user
 * I want to be able to generate a meal plan for a set amount of time.
 * I want those meals to give me my set macro goals for the day.
 
-###### Search receipes by Ingrediants (Importance - Medium)  (Est: 2h)
+###### Get Randome Receipes (Importance - High)  (Est: 2h)
 * As a user
 * I want to be able to look up receipes based off of what I have in the house.
 
@@ -36,8 +36,8 @@ This app is for two types of users: a visitor and a logged-in user
 ### 3. Functionality
 The app's functionality includes:
 * User will be able to type a question and get a quick answer from the get quick answer from Spoonacular API.  https://spoonacular.com/food-api/docs#Quick-Answer
-* User will be able to search receipes for nutrition facts using the Spoonacular API https://spoonacular.com/food-api/docs#Search-Recipes-by-Ingredients.
 * User will be able to create a daily meal plan using the spoonacular API https://spoonacular.com/food-api/docs#Generate-Meal-Plan.
+* User will be able to search for recipes by entering a search term.  Will be able to get up to 10 recipes.
 
 
 
@@ -52,8 +52,7 @@ The app's functionality includes:
 Landing Page
 :-------------------------:
 ![Landing Page](/github-images/wireframes/landing-page-wireframe.jpg)
-Register Page
-![Register Page](/github-images/wireframes/register-page-wireframe.png)
+
 
 
 ### 6. API Documentation (to do later)

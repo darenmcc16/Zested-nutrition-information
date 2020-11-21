@@ -22,11 +22,10 @@
         </form>
 
         <p id="js-error-message" class="error-message"></p>
-        <section id="results" class="hidden">
-          <h3></h3>
-          <div id="results-list">
-          </div>
-        </section>
+        <article id="results" class="hidden">
+          <section id="results-list">
+          </section>
+        </article>
     </div>
 
     <!--Generate Meal Plan section-->
@@ -41,13 +40,14 @@
       </ul>
       <form class="js-form-2">
         <label for="js-timeFrame">Meal plan time frame</label>
-        <input type="text" name="timeFrame" id="js-timeFrame" placeholder="one day or an entire week" required><br>
+        <input type="text" name="timeFrame" id="js-timeFrame" placeholder="one day or an entire week" value="day" required><br>
         <label for="js-targetCalories">Enter Target Calories for the day or the week</label>
-        <input type="number" name="targetCalories" id="js-targetCalories" required><br>
+        <input type="number" name="targetCalories" id="js-targetCalories" value="2000" required><br>
         <label for="js-diet">Specialty diet</label>
         <input type="text" name="diet" id="js-diet" placeholder="Vegan, Keto, Paleo etc"><br>
         <label for="js-exclude">Please enter any dietary restrictions here</label>
-        <input type="text" name="exclude" id="js-exclude" placeholder="Peanuts, Shellfish etc">
+        <input type="text" name="exclude" id="js-exclude" placeholder="Peanuts, Shellfish etc"><br>
+        <input type="submit" value="Get Meal Plan">
       </form>
 
       <p id="js-error-message" class="error-message"></p>
@@ -55,23 +55,24 @@
         <h3>Here is your personalized meal plan</h3>
         <ul id="mealPlanResults">
         </ul>
+        <h4>Macro Results</h4>
         <ul id="nutrientsResults">
         </ul>
     </div>
 
     <div class="container3">
-    <h2>Search Recipes by Ingredients</h2>
+    <h2>Search for Random Recipes</h2>
     <form class="js-form-3">
-      <label for="js-ingredient-search">Enter Ingredient here</label>
-      <input type="text" name="search-ingredient" id="js-ingredient-search" required>
+      <label for="js-recipe-search">Search</label>
+      <input type="text" name="search-recipe" id="js-recipe-search" required>
 
-      <label for="js-max-results">Max results</label>
-      <input type="number" name="max-results" id="js-max-results" value="10">
+      <label for="js-max-results">Number of Results</label>
+      <input type="number" name="max-results" id="js-max-results" value="1" max="10">
       <input type="submit" value="Search">
     </form>
 
     <p id="js-error-message" class="error-message"></p>
-    <section class="indredient-results hidden">
+    <section class="hidden">
       <h3>Recipe Results</h3>
       <ul id="recipe-results">
       </ul>
