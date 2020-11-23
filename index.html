@@ -7,6 +7,9 @@
     <title>NutritionX - Getting in Shape</title>
     <link rel="shortcut icon" href="#">
     <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Nerko+One&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -32,20 +35,32 @@
     <div class="container2">
       <h2>Generate Meal Plan</h2>
       <p>To Generate your custom meal plan enter in the following...</p>
-      <ul>
+      <ul class="bullets">
         <li>Time Frame of the diet plan</li>
         <li>Desired target daily calorie amount</li>
         <li>Specailty diets i.e. Vegitarian, keto, paleo etc.</li>
         <li>Dietary restrictions</li>
       </ul>
       <form class="js-form-2">
-        <label for="js-timeFrame">Meal plan time frame</label>
-        <input type="text" name="timeFrame" id="js-timeFrame" placeholder="one day or an entire week" value="day" required><br>
-        <label for="js-targetCalories">Enter Target Calories for the day or the week</label>
+        <label for="js-timeFrame">Meal plan time frame</label><br>
+        <select  name="timeFrame" id="js-timeFrame" required>
+          <option value="day">Day</option>
+          <option value="week">Week</option>
+        </select><br>
+        <label for="js-targetCalories">Enter Target Calories for the day or the week</label><br>
         <input type="number" name="targetCalories" id="js-targetCalories" value="2000" required><br>
-        <label for="js-diet">Specialty diet</label>
-        <input type="text" name="diet" id="js-diet" placeholder="Vegan, Keto, Paleo etc"><br>
-        <label for="js-exclude">Please enter any dietary restrictions here</label>
+        <label for="js-diet">Specialty diet</label><br>
+        <select name="diet" id="js-diet">
+          <option value="vegan">Vegan</option>
+          <option value="Vegitarian">Vegitarian</option>
+          <option value="paleo">Paleo</option>
+          <option value="primal">Primal</option>
+          <option value="keto">Keto</option>
+          <option value="pescetarian">Pescetarian</option>
+          <option value="whole30">whole30</option>
+        </select>
+        <br>
+        <label for="js-exclude">Please enter any dietary restrictions here</label><br>
         <input type="text" name="exclude" id="js-exclude" placeholder="Peanuts, Shellfish etc"><br>
         <input type="submit" value="Get Meal Plan">
       </form>
@@ -63,15 +78,15 @@
     <div class="container3">
     <h2>Search for Random Recipes</h2>
     <form class="js-form-3">
-      <label for="js-recipe-search">Search</label>
-      <input type="text" name="search-recipe" id="js-recipe-search" required>
+      <label for="js-recipe-search">Search</label><br>
+      <input type="text" name="search-recipe" id="js-recipe-search" required><br>
 
-      <label for="js-max-results">Number of Results</label>
-      <input type="number" name="max-results" id="js-max-results" value="1" max="10">
+      <label for="js-max-results">Number of Results</label><br>
+      <input type="number" name="max-results" id="js-max-results" value="1" max="10"><br>
       <input type="submit" value="Search">
     </form>
 
-    <p id="js-error-message" class="error-message"></p>
+    <p id="js-error-message-recipe" class="error-message"></p>
     <section class="hidden">
       <h3>Recipe Results</h3>
       <ul id="recipe-results">

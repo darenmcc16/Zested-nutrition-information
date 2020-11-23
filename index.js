@@ -14,7 +14,7 @@ function formatQueryParams(params){
 
 function displayResultsQuick(responseJson){
     console.log(responseJson);
-    //$('#results-list').empty();
+    $('#results-list').empty();
         $('#results-list').append(`<p>${responseJson.answer}</p>`)
         $('#results-list').append(`<img src="${responseJson.image}">`)
     console.log(responseJson.answer);
@@ -37,10 +37,19 @@ function getQuickAnswerResults(query){
     }
     throw new Error(response.statusText);
   })
-  .then(responseJson => displayResultsQuick(responseJson))
+  .then(responseJson => {
+    console.log(responseJson)
+    if(Object.keys(responseJson).length == 0) {
+      throw new Error("No results found");
+    }
+    else{
+      displayResultsQuick(responseJson)
+    }
+  })
   .catch(err =>{
     $('#js-error-message').text(`Something went wrong: ${err.message}`);
   });
+  
 }
 
 function watchForm1(){
@@ -66,7 +75,7 @@ function formatQueryParamsPart2(params){
     console.log(queryItems);
 }
 
-function displayMealResults(responseJson){
+function displayMealResultsDay(responseJson){
     console.log(responseJson);
     $('#mealPlanResults').empty();
     for(let i=0; i < responseJson.length; i++){
@@ -78,20 +87,127 @@ function displayMealResults(responseJson){
     $('#mealPlan-results').removeClass('hidden');
 }
 
-function displayNutrientsResults(responseJson){
+function displayMealResultsWeek(responseJson){
   console.log(responseJson);
-  $('#nutrientsResults').empty();
-    $('#nutrientsResults').append(`
-    <li>Total Calories for the day: ${responseJson.calories}</li>
-    <li>Total Carbs for the day: ${responseJson.carbohydrates}</li>
-    <li>Total Fat for the day: ${responseJson.fat}</li>
-    <li>Total Protein for the Day: ${responseJson.protein}</li>`)
+  $('#mealPlanResults').empty();
+
+
+  //Monday
+  $('#mealPlanResults').append(`<h3>Monday</h3>`)
+  for(let i=0; i < responseJson.monday.meals.length; i++){
+    $('#mealPlanResults').append(`
+    <p>${responseJson.monday.meals[i].title}<p>
+    <a href="${responseJson.monday.meals[i].sourceUrl}" target="_blank">Cooking Instructions</a>`)
+  }
+  $('#mealPlanResults').append(`
+    <p>Your total calores for the day: ${responseJson.monday.nutrients.calories}<p>
+    <p>Your total carbs for the day: ${responseJson.monday.nutrients.carbohydrates}<p>
+    <p>Your total fat for the day: ${responseJson.monday.nutrients.fat}<p>
+    <p>Your total protein for the day: ${responseJson.monday.nutrients.protein}<p>
+    `)
+
+
+  //Tuesday
+  $('#mealPlanResults').append(`<h3>Tuesday</h3>`)
+  for(let i=0; i < responseJson.tuesday.meals.length; i++){
+    $('#mealPlanResults').append(`
+    <p>${responseJson.tuesday.meals[i].title}<p>
+    <a href="${responseJson.tuesday.meals[i].sourceUrl}" target="_blank">Cooking Instructions</a>`)
+  }
+  $('#mealPlanResults').append(`
+    <p>Your total calores for the day: ${responseJson.tuesday.nutrients.calories}<p>
+    <p>Your total carbs for the day: ${responseJson.tuesday.nutrients.carbohydrates}<p>
+    <p>Your total fat for the day: ${responseJson.tuesday.nutrients.fat}<p>
+    <p>Your total protein for the day: ${responseJson.tuesday.nutrients.protein}<p>
+    `)
+
+      //Wednesday
+  $('#mealPlanResults').append(`<h3>Wednesday</h3>`)
+  for(let i=0; i < responseJson.wednesday.meals.length; i++){
+    $('#mealPlanResults').append(`
+    <p>${responseJson.wednesday.meals[i].title}<p>
+    <a href="${responseJson.wednesday.meals[i].sourceUrl}" target="_blank">Cooking Instructions</a>`)
+  }
+  $('#mealPlanResults').append(`
+    <p>Your total calores for the day: ${responseJson.wednesday.nutrients.calories}<p>
+    <p>Your total carbs for the day: ${responseJson.wednesday.nutrients.carbohydrates}<p>
+    <p>Your total fat for the day: ${responseJson.wednesday.nutrients.fat}<p>
+    <p>Your total protein for the day: ${responseJson.wednesday.nutrients.protein}<p>
+    `)
+
+
+       //Thursday
+  $('#mealPlanResults').append(`<h3>Thursday</h3>`)
+  for(let i=0; i < responseJson.thursday.meals.length; i++){
+    $('#mealPlanResults').append(`
+    <p>${responseJson.thursday.meals[i].title}<p>
+    <a href="${responseJson.thursday.meals[i].sourceUrl}" target="_blank">Cooking Instructions</a>`)
+  }
+  $('#mealPlanResults').append(`
+    <p>Your total calores for the day: ${responseJson.thursday.nutrients.calories}<p>
+    <p>Your total carbs for the day: ${responseJson.thursday.nutrients.carbohydrates}<p>
+    <p>Your total fat for the day: ${responseJson.thursday.nutrients.fat}<p>
+    <p>Your total protein for the day: ${responseJson.thursday.nutrients.protein}<p>
+    `)
+
+      //Friday
+  $('#mealPlanResults').append(`<h3>Friday</h3>`)
+  for(let i=0; i < responseJson.friday.meals.length; i++){
+    $('#mealPlanResults').append(`
+    <p>${responseJson.friday.meals[i].title}<p>
+    <a href="${responseJson.friday.meals[i].sourceUrl}" target="_blank">Cooking Instructions</a>`)
+  }
+  $('#mealPlanResults').append(`
+  <p>Your total calores for the day: ${responseJson.friday.nutrients.calories}<p>
+  <p>Your total carbs for the day: ${responseJson.friday.nutrients.carbohydrates}<p>
+  <p>Your total fat for the day: ${responseJson.friday.nutrients.fat}<p>
+  <p>Your total protein for the day: ${responseJson.friday.nutrients.protein}<p>
+  `)
+
+     
+    //Saturday
+  $('#mealPlanResults').append(`<h3>Saturday</h3>`)
+  for(let i=0; i < responseJson.saturday.meals.length; i++){
+    $('#mealPlanResults').append(`
+    <p>${responseJson.saturday.meals[i].title}<p>
+    <a href="${responseJson.saturday.meals[i].sourceUrl}" target="_blank">Cooking Instructions</a>`)
+  }
+  $('#mealPlanResults').append(`
+    <p>Your total calores for the day: ${responseJson.saturday.nutrients.calories}<p>
+    <p>Your total carbs for the day: ${responseJson.saturday.nutrients.carbohydrates}<p>
+    <p>Your total fat for the day: ${responseJson.saturday.nutrients.fat}<p>
+    <p>Your total protein for the day: ${responseJson.saturday.nutrients.protein}<p>
+    `)
+
+     //Sunday
+  $('#mealPlanResults').append(`<h3>Sunday</h3>`)
+  for(let i=0; i < responseJson.sunday.meals.length; i++){
+    $('#mealPlanResults').append(`
+    <p>${responseJson.sunday.meals[i].title}<p>
+    <a href="${responseJson.sunday.meals[i].sourceUrl}" target="_blank">Cooking Instructions</a>`)
+  }
+  $('#mealPlanResults').append(`
+    <p>Your total calores for the day: ${responseJson.sunday.nutrients.calories}<p>
+    <p>Your total carbs for the day: ${responseJson.sunday.nutrients.carbohydrates}<p>
+    <p>Your total fat for the day: ${responseJson.sunday.nutrients.fat}<p>
+    <p>Your total protein for the day: ${responseJson.sunday.nutrients.protein}<p>
+    `)
 }
 
-function getMealPlanResults(day,number,dietType, excludeThis){
+// function displayNutrientsResults(responseJson){
+//   console.log(responseJson);
+//   $('#nutrientsResults').empty();
+//     $('#nutrientsResults').append(`
+//     <li>Total Calories for the day: ${responseJson.calories}</li>
+//     <li>Total Carbs for the day: ${responseJson.carbohydrates}</li>
+//     <li>Total Fat for the day: ${responseJson.fat}</li>
+//     <li>Total Protein for the Day: ${responseJson.protein}</li>`)
+// }
+
+function getMealPlanResults(searchTimeFrame,number,dietType, excludeThis){
   const params = {
     Key: apiKey,
-    timeFrame: day,
+    timeFrame: searchTimeFrame,
     targetCalories: number,
     diet: dietType,
     exclude: excludeThis
@@ -110,8 +226,13 @@ function getMealPlanResults(day,number,dietType, excludeThis){
   })
   .then(responseJson => {
     console.log(responseJson)
-    displayMealResults(responseJson.meals)
-    displayNutrientsResults(responseJson.nutrients)
+    if(searchTimeFrame == 'day'){
+      displayMealResultsDay(responseJson.meals)
+    }
+    else{
+      displayMealResultsWeek(responseJson.week)
+    }
+    //displayNutrientsResults(responseJson.nutrients)
   })
   .catch(err =>{
     $('#js-error-message').text(`Something went wrong: ${err.message}`);
@@ -179,9 +300,17 @@ function getRecipeResults(query, number=10) {
       }
       throw new Error(response.statusText);
     })
-    .then(responseJson => displayRecipeResults(responseJson))
-    .catch(err => {
-      $('#js-error-message').text(`Something went wrong: ${err.message}`);
+    .then(responseJson => {
+      console.log(responseJson)
+      if(Object.keys(responseJson).length == 0) {
+        throw new Error("No results found");
+      }
+      else{
+        displayRecipeResults(responseJson)
+      }
+    })
+    .catch(err =>{
+      $('#js-error-message-recipe').text(`Something went wrong: ${err.message}`);
     });
 }
 
