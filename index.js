@@ -84,7 +84,7 @@ function displayMealResultsDay(responseJson){
         <a href="${responseJson[i].sourceUrl}">Cooking Instructions</a>
         </li>`)
     }    
-    $('#mealPlan-results').removeClass('hidden');
+    $('.mealPlan-results').removeClass('hidden');
 }
 
 function displayMealResultsWeek(responseJson){
@@ -239,6 +239,9 @@ function getMealPlanResults(searchTimeFrame,number,dietType, excludeThis){
   });
 }
 
+
+
+
 function watchForm2(){
   $('.js-form-2').submit(event =>{
     console.log('Generate Meal app ready');
@@ -266,7 +269,6 @@ function formatQueryParamsPart3(params) {
 function displayRecipeResults(responseJson) {
   console.log(responseJson);
   $('#recipe-results').empty();
-  
   for (let i = 0; i < responseJson.recipes.length; i++){
     $('#recipe-results').append(`
     <li>
@@ -274,12 +276,12 @@ function displayRecipeResults(responseJson) {
     <p>${responseJson.recipes[i].summary}</p>
     <p>Ready in: ${responseJson.recipes[i].readyInMinutes} minutes</p>
     <p>Serves: ${responseJson.recipes[i].servings}</p>
-    <img src="${responseJson.recipes[i].image}">
+    <img src="${responseJson.recipes[i].image}"><br>
     <a href="${responseJson.recipes[i].sourceUrl}">${responseJson.recipes[i].sourceUrl}</a>
     </li>` 
     )};
   //display the results section  
-  $('#results').removeClass('hidden');
+  $('#recipes').removeClass('hidden');
 };
 
 function getRecipeResults(query, number=10) {
@@ -302,17 +304,19 @@ function getRecipeResults(query, number=10) {
     })
     .then(responseJson => {
       console.log(responseJson)
-      if(Object.keys(responseJson).length == 0) {
-        throw new Error("No results found");
+      if(responseJson.recipes.length === 0) {
+        throw new Error("No Recipes Found");
       }
       else{
         displayRecipeResults(responseJson)
       }
     })
     .catch(err =>{
-      $('#js-error-message-recipe').text(`Something went wrong: ${err.message}`);
+      $('.js-error-message-recipe').text(`Something went wrong: ${err.message}`);
     });
 }
+
+
 
 function watchForm3() {
   $('.js-form-3').submit(event => {

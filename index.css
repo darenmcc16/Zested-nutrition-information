@@ -1,12 +1,12 @@
 body{
     background-image: url(website-images/background-image.jpg);
-    background-repeat: no-repeat;
-    background-size: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 h1{
     color: #E5FFDE;
-    font-family: 'Merriweather', serif;
+    font-family: 'Nerko', cursive;
 }
 
 .container{
@@ -72,4 +72,23 @@ input[type=text], select {
 .container3{
     color: #E5FFDE;
     font-family: 'Nerko', cursive;
+}
+
+a{
+    color: #E5FFDE;
+}
+
+a:hover{
+    color: #4FD68B
+}
+
+.hidden{
+    display: none;
+}
+
+@media all and (min-width: 700px){
+    body{
+        display: flex;
+        flex-direction: column;
+    }
 }

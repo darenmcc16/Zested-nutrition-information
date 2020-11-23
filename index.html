@@ -51,6 +51,7 @@
         <input type="number" name="targetCalories" id="js-targetCalories" value="2000" required><br>
         <label for="js-diet">Specialty diet</label><br>
         <select name="diet" id="js-diet">
+          <option></option>
           <option value="vegan">Vegan</option>
           <option value="Vegitarian">Vegitarian</option>
           <option value="paleo">Paleo</option>
@@ -75,6 +76,7 @@
         </ul>
     </div>
 
+    <!--Random Recipes section-->
     <div class="container3">
     <h2>Search for Random Recipes</h2>
     <form class="js-form-3">
@@ -85,11 +87,9 @@
       <input type="number" name="max-results" id="js-max-results" value="1" max="10"><br>
       <input type="submit" value="Search">
     </form>
-
-    <p id="js-error-message-recipe" class="error-message"></p>
-    <section class="hidden">
-      <h3>Recipe Results</h3>
-      <ul id="recipe-results">
+    <!--<p id="js-error-message-recipe" class="error-message"></p>-->
+    <section id="recipes">
+      <ul id="recipe-results" class="js-error-message-recipe">
       </ul>
     </div>
   
