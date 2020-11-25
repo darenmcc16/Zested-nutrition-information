@@ -18,6 +18,7 @@ function displayResultsQuick(responseJson){
         $('#results-list').append(`<p>${responseJson.answer}</p>`)
         $('#results-list').append(`<img src="${responseJson.image}">`)
     console.log(responseJson.answer);
+    $('#results').removeClass('hidden')
 }
 
 function getQuickAnswerResults(query){
@@ -82,7 +83,8 @@ function displayMealResultsDay(responseJson){
         $('#mealPlanResults').append(`<li>
         <h3>${responseJson[i].title}</h3>
         <a href="${responseJson[i].sourceUrl}">Cooking Instructions</a>
-        </li>`)
+        </li>
+        `)
     }    
     $('.mealPlan-results').removeClass('hidden');
 }
@@ -100,10 +102,11 @@ function displayMealResultsWeek(responseJson){
     <a href="${responseJson.monday.meals[i].sourceUrl}" target="_blank">Cooking Instructions</a>`)
   }
   $('#mealPlanResults').append(`
-    <p>Your total calores for the day: ${responseJson.monday.nutrients.calories}<p>
-    <p>Your total carbs for the day: ${responseJson.monday.nutrients.carbohydrates}<p>
-    <p>Your total fat for the day: ${responseJson.monday.nutrients.fat}<p>
-    <p>Your total protein for the day: ${responseJson.monday.nutrients.protein}<p>
+    <h4>Macro Results</h4>
+    <p>Your total calores for the day: ${responseJson.monday.nutrients.calories}</p>
+    <p>Your total carbs for the day: ${responseJson.monday.nutrients.carbohydrates}</p>
+    <p>Your total fat for the day: ${responseJson.monday.nutrients.fat}</p>
+    <p>Your total protein for the day: ${responseJson.monday.nutrients.protein}</p>
     `)
 
 
@@ -115,6 +118,7 @@ function displayMealResultsWeek(responseJson){
     <a href="${responseJson.tuesday.meals[i].sourceUrl}" target="_blank">Cooking Instructions</a>`)
   }
   $('#mealPlanResults').append(`
+    <h4>Macro Results</h4>
     <p>Your total calores for the day: ${responseJson.tuesday.nutrients.calories}<p>
     <p>Your total carbs for the day: ${responseJson.tuesday.nutrients.carbohydrates}<p>
     <p>Your total fat for the day: ${responseJson.tuesday.nutrients.fat}<p>
@@ -129,6 +133,7 @@ function displayMealResultsWeek(responseJson){
     <a href="${responseJson.wednesday.meals[i].sourceUrl}" target="_blank">Cooking Instructions</a>`)
   }
   $('#mealPlanResults').append(`
+    <h4>Macro Results</h4>
     <p>Your total calores for the day: ${responseJson.wednesday.nutrients.calories}<p>
     <p>Your total carbs for the day: ${responseJson.wednesday.nutrients.carbohydrates}<p>
     <p>Your total fat for the day: ${responseJson.wednesday.nutrients.fat}<p>
@@ -144,6 +149,7 @@ function displayMealResultsWeek(responseJson){
     <a href="${responseJson.thursday.meals[i].sourceUrl}" target="_blank">Cooking Instructions</a>`)
   }
   $('#mealPlanResults').append(`
+    <h4>Macro Results</h4>
     <p>Your total calores for the day: ${responseJson.thursday.nutrients.calories}<p>
     <p>Your total carbs for the day: ${responseJson.thursday.nutrients.carbohydrates}<p>
     <p>Your total fat for the day: ${responseJson.thursday.nutrients.fat}<p>
@@ -158,6 +164,7 @@ function displayMealResultsWeek(responseJson){
     <a href="${responseJson.friday.meals[i].sourceUrl}" target="_blank">Cooking Instructions</a>`)
   }
   $('#mealPlanResults').append(`
+  <h4>Macro Results</h4>
   <p>Your total calores for the day: ${responseJson.friday.nutrients.calories}<p>
   <p>Your total carbs for the day: ${responseJson.friday.nutrients.carbohydrates}<p>
   <p>Your total fat for the day: ${responseJson.friday.nutrients.fat}<p>
@@ -173,6 +180,7 @@ function displayMealResultsWeek(responseJson){
     <a href="${responseJson.saturday.meals[i].sourceUrl}" target="_blank">Cooking Instructions</a>`)
   }
   $('#mealPlanResults').append(`
+    <h4>Macro Results</h4>
     <p>Your total calores for the day: ${responseJson.saturday.nutrients.calories}<p>
     <p>Your total carbs for the day: ${responseJson.saturday.nutrients.carbohydrates}<p>
     <p>Your total fat for the day: ${responseJson.saturday.nutrients.fat}<p>
@@ -187,22 +195,26 @@ function displayMealResultsWeek(responseJson){
     <a href="${responseJson.sunday.meals[i].sourceUrl}" target="_blank">Cooking Instructions</a>`)
   }
   $('#mealPlanResults').append(`
+    <h4>Macro Results</h4>
     <p>Your total calores for the day: ${responseJson.sunday.nutrients.calories}<p>
     <p>Your total carbs for the day: ${responseJson.sunday.nutrients.carbohydrates}<p>
     <p>Your total fat for the day: ${responseJson.sunday.nutrients.fat}<p>
     <p>Your total protein for the day: ${responseJson.sunday.nutrients.protein}<p>
     `)
+
+    //$('mealPlan-results').removeClass('hidden')
 }
 
-// function displayNutrientsResults(responseJson){
-//   console.log(responseJson);
-//   $('#nutrientsResults').empty();
-//     $('#nutrientsResults').append(`
-//     <li>Total Calories for the day: ${responseJson.calories}</li>
-//     <li>Total Carbs for the day: ${responseJson.carbohydrates}</li>
-//     <li>Total Fat for the day: ${responseJson.fat}</li>
-//     <li>Total Protein for the Day: ${responseJson.protein}</li>`)
-// }
+function displayNutrientsResults(responseJson){
+  console.log(responseJson);
+  $('#nutrientsResults').empty();
+    $('#nutrientsResults').append(`
+    <h3>Macro Results</h3>
+    <li>Total Calories for the day: ${responseJson.calories}</li>
+    <li>Total Carbs for the day: ${responseJson.carbohydrates}</li>
+    <li>Total Fat for the day: ${responseJson.fat}</li>
+    <li>Total Protein for the Day: ${responseJson.protein}</li>`)
+}
 
 function getMealPlanResults(searchTimeFrame,number,dietType, excludeThis){
   const params = {
@@ -228,11 +240,11 @@ function getMealPlanResults(searchTimeFrame,number,dietType, excludeThis){
     console.log(responseJson)
     if(searchTimeFrame == 'day'){
       displayMealResultsDay(responseJson.meals)
+      displayNutrientsResults(responseJson.nutrients)
     }
     else{
       displayMealResultsWeek(responseJson.week)
     }
-    //displayNutrientsResults(responseJson.nutrients)
   })
   .catch(err =>{
     $('#js-error-message').text(`Something went wrong: ${err.message}`);
