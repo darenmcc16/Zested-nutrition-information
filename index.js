@@ -8,7 +8,7 @@ const searchURL = 'https://api.spoonacular.com/recipes/quickAnswer?api';
 function formatQueryParams(params){
     const queryItems = Object.keys(params)
     .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
-    console.log(queryItems);
+    //console.log(queryItems);
     return queryItems.join('&');
 }
 
@@ -17,7 +17,7 @@ function displayResultsQuick(responseJson){
     $('#results-list').empty();
         $('#results-list').append(`<p>${responseJson.answer}</p>`)
         $('#results-list').append(`<img src="${responseJson.image}">`)
-    console.log(responseJson.answer);
+    //console.log(responseJson.answer);
     $('#results').removeClass('hidden')
 }
 
@@ -29,7 +29,7 @@ function getQuickAnswerResults(query){
   const queryString = formatQueryParams(params)
   const url = searchURL + queryString;
 
-  console.log(url);
+  //console.log(url);
 
   fetch(url)
   .then(response => {
@@ -58,14 +58,14 @@ function watchForm1(){
     event.preventDefault();
     const searchTerm = $('#js-search-term').val();
     getQuickAnswerResults(searchTerm);
-    console.log('Quick Answer Search is Ready');
+    //console.log('Quick Answer Search is Ready');
   });
 }
 
 $(watchForm1);
 
 
-//jQuery code for Generating Meal Plan
+//Generating Meal Plan
 
 const searchURLMealPlan = 'https://api.spoonacular.com/mealplanner/generate?api';
 
@@ -73,11 +73,11 @@ function formatQueryParamsPart2(params){
     const queryItems = Object.keys(params)
     .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
     return queryItems.join('&');
-    console.log(queryItems);
+    //console.log(queryItems);
 }
 
 function displayMealResultsDay(responseJson){
-    console.log(responseJson);
+   // console.log(responseJson);
     $('#mealPlanResults').empty();
     for(let i=0; i < responseJson.length; i++){
         $('#mealPlanResults').append(`<li>
@@ -90,7 +90,7 @@ function displayMealResultsDay(responseJson){
 }
 
 function displayMealResultsWeek(responseJson){
-  console.log(responseJson);
+  //console.log(responseJson);
   $('#mealPlanResults').empty();
 
 
@@ -226,7 +226,7 @@ function getMealPlanResults(searchTimeFrame,number,dietType, excludeThis){
   const queryString2 = formatQueryParamsPart2(params)
   const url = searchURLMealPlan + queryString2;
 
-  console.log(url);
+  //console.log(url);
 
   fetch(url)
   .then(response => {
@@ -236,7 +236,7 @@ function getMealPlanResults(searchTimeFrame,number,dietType, excludeThis){
     throw new Error(response.statusText);
   })
   .then(responseJson => {
-    console.log(responseJson)
+    //console.log(responseJson)
     if(searchTimeFrame == 'day'){
       displayMealResultsDay(responseJson.meals)
       displayNutrientsResults(responseJson.nutrients)
@@ -253,14 +253,14 @@ function getMealPlanResults(searchTimeFrame,number,dietType, excludeThis){
 
 function watchForm2(){
   $('.js-form-2').submit(event =>{
-    console.log('Generate Meal app ready');
+    //console.log('Generate Meal app ready');
     event.preventDefault();
     const searchTimeFrame = $('#js-timeFrame').val();
     const searchTargetCalories = $('#js-targetCalories').val();
     const searchDiet = $('#js-diet').val();
     const searchExclude = $('#js-exclude').val();
     getMealPlanResults(searchTimeFrame, searchTargetCalories, searchDiet, searchExclude);
-    console.log('Generate Meal app ready');
+    //console.log('Generate Meal app ready');
   });
 }
 
@@ -276,7 +276,7 @@ function formatQueryParamsPart3(params) {
 }
 
 function displayRecipeResults(responseJson) {
-  console.log(responseJson);
+  //console.log(responseJson);
   $('#recipe-results').empty();
   for (let i = 0; i < responseJson.recipes.length; i++){
     $('#recipe-results').append(`
@@ -302,7 +302,7 @@ function getRecipeResults(query, number=10) {
   const queryString3 = formatQueryParamsPart3(params)
   const url = searchURLRecipes + queryString3;
 
-  console.log(url);
+  //console.log(url);
 
   fetch(url)
     .then(response => {
@@ -312,7 +312,7 @@ function getRecipeResults(query, number=10) {
       throw new Error(response.statusText);
     })
     .then(responseJson => {
-      console.log(responseJson)
+      //console.log(responseJson)
       if(responseJson.recipes.length === 0) {
         throw new Error("No Recipes Found");
       }
