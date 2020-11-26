@@ -202,9 +202,8 @@ function displayMealResultsWeek(responseJson){
     <p>Your total protein for the day: ${responseJson.sunday.nutrients.protein}<p>
     `)
 
-    //$('mealPlan-results').removeClass('hidden')
 }
-
+//This function will only be used for when the user selects the day option
 function displayNutrientsResults(responseJson){
   console.log(responseJson);
   $('#nutrientsResults').empty();
@@ -252,8 +251,6 @@ function getMealPlanResults(searchTimeFrame,number,dietType, excludeThis){
 }
 
 
-
-
 function watchForm2(){
   $('.js-form-2').submit(event =>{
     console.log('Generate Meal app ready');
@@ -269,7 +266,7 @@ function watchForm2(){
 
 $(watchForm2);
 
-
+//Get random recipes section
 const searchURLRecipes = 'https://api.spoonacular.com/recipes/random?api'
 
 function formatQueryParamsPart3(params) {

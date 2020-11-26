@@ -10,7 +10,7 @@ You can access a working prototype of the app here: https://darenmcc16.github.io
 
 
 
-### 2. User Stories (to do now)
+### 2. User Stories
 This app is for two types of users: a visitor and a logged-in user
 
 ###### Landing Page (Importance - High) (Est: 1h)
@@ -36,7 +36,7 @@ This app is for two types of users: a visitor and a logged-in user
 ### 3. Functionality
 The app's functionality includes:
 * User will be able to type a question and get a quick answer from the get quick answer from Spoonacular API.  https://spoonacular.com/food-api/docs#Quick-Answer
-* User will be able to create a daily meal plan using the spoonacular API https://spoonacular.com/food-api/docs#Generate-Meal-Plan.
+* User will be able to create a daily or weekly meal plan using the spoonacular API https://spoonacular.com/food-api/docs#Generate-Meal-Plan.
 * User will be able to search for recipes by entering a search term.  Will be able to get up to 10 recipes.
 
 
@@ -48,29 +48,26 @@ The app's functionality includes:
 
 
 
-### 5. Wireframes (to do now)
+### 5. Wireframes
 Landing Page
 :-------------------------:
 ![Landing Page](/github-images/wireframes/landing-page-wireframe.jpg)
 
 
 
-### 6. API Documentation (to do later)
+### 6. API Documentation
 API Documentation details:
 * get quick answers https://spoonacular.com/food-api/docs#Quick-Answer
 
 
 
-### 7. Screenshots (to do later)
+### 7. Screenshots
 Landing Page
 :-------------------------:
-![Landing Page](/github-images/screenshots/landing-page-screenshot.png)
-Register Page
-![Register Page](/github-images/screenshots/register-page-screenshot.png)
+![Landing Page](/github-images/screenshots/landing-page.png)
 
 
-### 8. Development Roadmap (to do later)
-This is v1.0 of the app, but future enhancements are expected to include:
-* (Example) add more functionality
+
+
 
 

@@ -17,10 +17,11 @@
   <h1>Zested</h1>
     <div class="container">
         <h2>Quick Answer Food Questions</h2>
-
+        <p>Have a specific question about a food?  Ask that here.</p>
+        <p>Example: How many carbs are in corn?</p>
         <form id="js-form">
-            <label for="js-search-term">What is your question?</label>
-            <input type="text" name="search-term" id="js-search-term" required>
+            <label for="js-search-term">What is your question?</label><br>
+            <input type="text" name="search-term" id="js-search-term" required><br>
             <input type="submit" value="Go!">
         </form>
 
@@ -85,7 +86,6 @@
       <input type="number" name="max-results" id="js-max-results" value="1" max="10"><br>
       <input type="submit" value="Search">
     </form>
-    <!--<p id="js-error-message-recipe" class="error-message"></p>-->
     <section id="recipes">
       <ul id="recipe-results" class="js-error-message-recipe">
       </ul>
