@@ -1,6 +1,6 @@
 'use strict';
 
-//jQuery for quick answer section of app.
+//quick answer section of app.
 
 const apiKey = '5e619bfd5e5f4ebaa7f6a6677cfd6255';
 const searchURL = 'https://api.spoonacular.com/recipes/quickAnswer?api';
@@ -8,16 +8,14 @@ const searchURL = 'https://api.spoonacular.com/recipes/quickAnswer?api';
 function formatQueryParams(params){
     const queryItems = Object.keys(params)
     .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
-    //console.log(queryItems);
     return queryItems.join('&');
 }
 
 function displayResultsQuick(responseJson){
-    console.log(responseJson);
+    $('#js-error-message').empty();
     $('#results-list').empty();
         $('#results-list').append(`<p>${responseJson.answer}</p>`)
         $('#results-list').append(`<img src="${responseJson.image}">`)
-    //console.log(responseJson.answer);
     $('#results').removeClass('hidden')
 }
 
@@ -29,7 +27,6 @@ function getQuickAnswerResults(query){
   const queryString = formatQueryParams(params)
   const url = searchURL + queryString;
 
-  //console.log(url);
 
   fetch(url)
   .then(response => {
@@ -53,31 +50,28 @@ function getQuickAnswerResults(query){
   
 }
 
-function watchForm1(){
+function watchForm(){
   $('#js-form').submit(event =>{
     event.preventDefault();
     const searchTerm = $('#js-search-term').val();
     getQuickAnswerResults(searchTerm);
-    //console.log('Quick Answer Search is Ready');
   });
 }
 
-$(watchForm1);
+$(watchForm);
 
 
 //Generating Meal Plan
 
 const searchURLMealPlan = 'https://api.spoonacular.com/mealplanner/generate?api';
 
-function formatQueryParamsPart2(params){
+function formatQueryParamsMealPlan(params){
     const queryItems = Object.keys(params)
     .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
     return queryItems.join('&');
-    //console.log(queryItems);
 }
 
 function displayMealResultsDay(responseJson){
-   // console.log(responseJson);
     $('#mealPlanResults').empty();
     for(let i=0; i < responseJson.length; i++){
         $('#mealPlanResults').append(`<li>
@@ -88,10 +82,10 @@ function displayMealResultsDay(responseJson){
     }    
     $('.mealPlan-results').removeClass('hidden');
 }
-
+//a separate function is used for each day because the API gives the days back in a random order
 function displayMealResultsWeek(responseJson){
-  //console.log(responseJson);
   $('#mealPlanResults').empty();
+  $('#js-error-message').empty();
 
 
   //Monday
@@ -103,7 +97,7 @@ function displayMealResultsWeek(responseJson){
   }
   $('#mealPlanResults').append(`
     <h4>Macro Results</h4>
-    <p>Your total calores for the day: ${responseJson.monday.nutrients.calories}</p>
+    <p>Your total calories for the day: ${responseJson.monday.nutrients.calories}</p>
     <p>Your total carbs for the day: ${responseJson.monday.nutrients.carbohydrates}</p>
     <p>Your total fat for the day: ${responseJson.monday.nutrients.fat}</p>
     <p>Your total protein for the day: ${responseJson.monday.nutrients.protein}</p>
@@ -119,7 +113,7 @@ function displayMealResultsWeek(responseJson){
   }
   $('#mealPlanResults').append(`
     <h4>Macro Results</h4>
-    <p>Your total calores for the day: ${responseJson.tuesday.nutrients.calories}<p>
+    <p>Your total calories for the day: ${responseJson.tuesday.nutrients.calories}<p>
     <p>Your total carbs for the day: ${responseJson.tuesday.nutrients.carbohydrates}<p>
     <p>Your total fat for the day: ${responseJson.tuesday.nutrients.fat}<p>
     <p>Your total protein for the day: ${responseJson.tuesday.nutrients.protein}<p>
@@ -134,7 +128,7 @@ function displayMealResultsWeek(responseJson){
   }
   $('#mealPlanResults').append(`
     <h4>Macro Results</h4>
-    <p>Your total calores for the day: ${responseJson.wednesday.nutrients.calories}<p>
+    <p>Your total calories for the day: ${responseJson.wednesday.nutrients.calories}<p>
     <p>Your total carbs for the day: ${responseJson.wednesday.nutrients.carbohydrates}<p>
     <p>Your total fat for the day: ${responseJson.wednesday.nutrients.fat}<p>
     <p>Your total protein for the day: ${responseJson.wednesday.nutrients.protein}<p>
@@ -150,7 +144,7 @@ function displayMealResultsWeek(responseJson){
   }
   $('#mealPlanResults').append(`
     <h4>Macro Results</h4>
-    <p>Your total calores for the day: ${responseJson.thursday.nutrients.calories}<p>
+    <p>Your total calories for the day: ${responseJson.thursday.nutrients.calories}<p>
     <p>Your total carbs for the day: ${responseJson.thursday.nutrients.carbohydrates}<p>
     <p>Your total fat for the day: ${responseJson.thursday.nutrients.fat}<p>
     <p>Your total protein for the day: ${responseJson.thursday.nutrients.protein}<p>
@@ -165,7 +159,7 @@ function displayMealResultsWeek(responseJson){
   }
   $('#mealPlanResults').append(`
   <h4>Macro Results</h4>
-  <p>Your total calores for the day: ${responseJson.friday.nutrients.calories}<p>
+  <p>Your total calories for the day: ${responseJson.friday.nutrients.calories}<p>
   <p>Your total carbs for the day: ${responseJson.friday.nutrients.carbohydrates}<p>
   <p>Your total fat for the day: ${responseJson.friday.nutrients.fat}<p>
   <p>Your total protein for the day: ${responseJson.friday.nutrients.protein}<p>
@@ -181,7 +175,7 @@ function displayMealResultsWeek(responseJson){
   }
   $('#mealPlanResults').append(`
     <h4>Macro Results</h4>
-    <p>Your total calores for the day: ${responseJson.saturday.nutrients.calories}<p>
+    <p>Your total calories for the day: ${responseJson.saturday.nutrients.calories}<p>
     <p>Your total carbs for the day: ${responseJson.saturday.nutrients.carbohydrates}<p>
     <p>Your total fat for the day: ${responseJson.saturday.nutrients.fat}<p>
     <p>Your total protein for the day: ${responseJson.saturday.nutrients.protein}<p>
@@ -196,7 +190,7 @@ function displayMealResultsWeek(responseJson){
   }
   $('#mealPlanResults').append(`
     <h4>Macro Results</h4>
-    <p>Your total calores for the day: ${responseJson.sunday.nutrients.calories}<p>
+    <p>Your total calories for the day: ${responseJson.sunday.nutrients.calories}<p>
     <p>Your total carbs for the day: ${responseJson.sunday.nutrients.carbohydrates}<p>
     <p>Your total fat for the day: ${responseJson.sunday.nutrients.fat}<p>
     <p>Your total protein for the day: ${responseJson.sunday.nutrients.protein}<p>
@@ -223,10 +217,9 @@ function getMealPlanResults(searchTimeFrame,number,dietType, excludeThis){
     diet: dietType,
     exclude: excludeThis
   };
-  const queryString2 = formatQueryParamsPart2(params)
-  const url = searchURLMealPlan + queryString2;
+  const queryMealPlan = formatQueryParamsMealPlan(params)
+  const url = searchURLMealPlan + queryMealPlan;
 
-  //console.log(url);
 
   fetch(url)
   .then(response => {
@@ -236,7 +229,6 @@ function getMealPlanResults(searchTimeFrame,number,dietType, excludeThis){
     throw new Error(response.statusText);
   })
   .then(responseJson => {
-    //console.log(responseJson)
     if(searchTimeFrame == 'day'){
       displayMealResultsDay(responseJson.meals)
       displayNutrientsResults(responseJson.nutrients)
@@ -251,33 +243,31 @@ function getMealPlanResults(searchTimeFrame,number,dietType, excludeThis){
 }
 
 
-function watchForm2(){
-  $('.js-form-2').submit(event =>{
-    //console.log('Generate Meal app ready');
+function watchFormMealPlan(){
+  $('.js-form-meal-plan').submit(event =>{
     event.preventDefault();
     const searchTimeFrame = $('#js-timeFrame').val();
     const searchTargetCalories = $('#js-targetCalories').val();
     const searchDiet = $('#js-diet').val();
     const searchExclude = $('#js-exclude').val();
     getMealPlanResults(searchTimeFrame, searchTargetCalories, searchDiet, searchExclude);
-    //console.log('Generate Meal app ready');
   });
 }
 
-$(watchForm2);
+$(watchFormMealPlan);
 
 //Get random recipes section
 const searchURLRecipes = 'https://api.spoonacular.com/recipes/random?api'
 
-function formatQueryParamsPart3(params) {
+function formatQueryParamsRecipes(params) {
   const queryItems = Object.keys(params)
     .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
   return queryItems.join('&');
 }
 
 function displayRecipeResults(responseJson) {
-  //console.log(responseJson);
   $('#recipe-results').empty();
+  $('.js-error-message-recipe').empty();
   for (let i = 0; i < responseJson.recipes.length; i++){
     $('#recipe-results').append(`
     <li>
@@ -299,10 +289,9 @@ function getRecipeResults(query, number=10) {
     tags: query,
     number,
   };
-  const queryString3 = formatQueryParamsPart3(params)
-  const url = searchURLRecipes + queryString3;
+  const queryStringRecipes = formatQueryParamsRecipes(params)
+  const url = searchURLRecipes + queryStringRecipes;
 
-  //console.log(url);
 
   fetch(url)
     .then(response => {
@@ -312,7 +301,6 @@ function getRecipeResults(query, number=10) {
       throw new Error(response.statusText);
     })
     .then(responseJson => {
-      //console.log(responseJson)
       if(responseJson.recipes.length === 0) {
         throw new Error("No Recipes Found");
       }
@@ -327,8 +315,8 @@ function getRecipeResults(query, number=10) {
 
 
 
-function watchForm3() {
-  $('.js-form-3').submit(event => {
+function watchFormRecipes() {
+  $('.js-form-recipe').submit(event => {
     event.preventDefault();
     const searchRecipe = $('#js-recipe-search').val();
     const maxResults = $('#js-max-results').val();
@@ -336,4 +324,4 @@ function watchForm3() {
   });
 }
 
-$(watchForm3);
+$(watchFormRecipes);

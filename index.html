@@ -12,37 +12,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Nerko+One&display=swap" rel="stylesheet">
 </head>
 <body>
-
-  <!--Quick Answer Section-->
   <h1>Zested</h1>
-    <div class="container">
-        <h2>Quick Answer Food Questions</h2>
-        <p>Have a specific question about a food?  Ask that here.</p>
-        <p>Example: How many carbs are in corn?</p>
-        <form id="js-form">
-            <label for="js-search-term">What is your question?</label><br>
-            <input type="text" name="search-term" id="js-search-term" required><br>
-            <input type="submit" value="Go!">
-        </form>
-
-        <p id="js-error-message" class="error-message"></p>
-        <article id="results" class="hidden">
-          <section id="results-list">
-          </section>
-        </article>
-    </div>
-
     <!--Generate Meal Plan section-->
-    <div class="container2">
+    <div class="containerMealPlan">
       <h2>Generate Meal Plan</h2>
       <p>To Generate your custom meal plan enter in the following...</p>
       <ul class="bullets">
         <li>Time Frame of the diet plan</li>
         <li>Desired target daily calorie amount</li>
-        <li>Specailty diets i.e. Vegitarian, keto, paleo etc.</li>
+        <li>specialty diets i.e. Vegetarian, Keto, Paleo etc.</li>
         <li>Dietary restrictions</li>
       </ul>
-      <form class="js-form-2">
+      <form class="js-form-meal-plan">
         <label for="js-timeFrame">Meal plan time frame</label><br>
         <select  name="timeFrame" id="js-timeFrame" required>
           <option value="day">Day</option>
@@ -54,12 +35,12 @@
         <select name="diet" id="js-diet">
           <option></option>
           <option value="vegan">Vegan</option>
-          <option value="Vegitarian">Vegitarian</option>
+          <option value="vegetarian">Vegetarian</option>
           <option value="paleo">Paleo</option>
           <option value="primal">Primal</option>
           <option value="keto">Keto</option>
-          <option value="pescetarian">Pescetarian</option>
-          <option value="whole30">whole30</option>
+          <option value="pescatarian">Pescatarian</option>
+          <option value="whole30">Whole30</option>
         </select>
         <br>
         <label for="js-exclude">Please enter any dietary restrictions here</label><br>
@@ -76,9 +57,9 @@
     </div>
 
     <!--Random Recipes section-->
-    <div class="container3">
+    <div class="containerRecipes">
     <h2>Search for Random Recipes</h2>
-    <form class="js-form-3">
+    <form class="js-form-recipe">
       <label for="js-recipe-search">Search</label><br>
       <input type="text" name="search-recipe" id="js-recipe-search" required><br>
 
@@ -90,6 +71,24 @@
       <ul id="recipe-results" class="js-error-message-recipe">
       </ul>
     </div>
+
+    <!--Quick Answer Section-->
+  <div class="containerQuickAnswers">
+      <h2>Quick Answer Food Questions</h2>
+      <p>Have a specific question about a food?  Ask that here.</p>
+      <p>Example: How many carbs are in corn?</p>
+      <form id="js-form">
+          <label for="js-search-term">What is your question?</label><br>
+          <input type="text" name="search-term" id="js-search-term" required><br>
+          <input type="submit" value="Go!">
+      </form>
+
+      <p id="js-error-message" class="error-message"></p>
+      <article id="results" class="hidden">
+        <section id="results-list">
+        </section>
+      </article>
+  </div>
   
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="index.js"></script>

@@ -6,14 +6,16 @@ body{
 }
 
 h1{
-    color: #E5FFDE;
+    color: #83c5be;
+    background-color: rgb(255, 255, 255);
     font-family: 'Nerko', cursive;
     border: 3px solid;
     text-align: center;
     margin-top: 0;
     position: relative;
     font-weight: bolder;
-    width: 1000px;
+    width: 90%;
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -30,35 +32,39 @@ p{
     font-weight: bolder;
 }
 
-.container{
-    color: #E5FFDE;
+.containerQuickAnswers{
+    color: white;
     font-family: 'Nerko', cursive;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     border: 2px solid black;
-    width: 1000px;
+    width: 90%;
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
     background: black;
+    font-weight: 900;
     opacity: 0.6;
 }
 
 .container p{
     margin-top: 0;
-    font-weight: bold;
+    font-weight: 1000;
 }
 
-.container2{
-    color: #E5FFDE;
+.containerMealPlan{
+    color: white;
     font-family: 'Nerko', cursive;
     text-align: center;
     border: 2px solid black;
-    width: 1000px;
+    width: 90%;
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
     background: black;
+    font-weight: 900;
     opacity: 0.6;
     flex-direction: column;
 
@@ -145,15 +151,17 @@ input[type=text], select {
     text-align: center;
   }
 
-.container3{
-    color: #E5FFDE;
+.containerRecipes{
+    color: white;
     font-family: 'Nerko', cursive;
     text-align: center;
     border: 2px solid black;
-    width: 1000px;
+    width: 90%;
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
     background: black;
+    font-weight: 900;
     opacity: 0.6
 }
 
